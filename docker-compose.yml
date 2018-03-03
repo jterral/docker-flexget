@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  flexget:
+    build: .
+    image: jojolabs/flexget:2.13.0
+    container_name: flexget_app
+    restart: unless-stopped
+    ports:
+      - 5050:5050
+    environment:
+      - TZ=Europe/Paris
+    volumes:
+      - "/volume1/docker/flexget/etc/:/root/.flexget/:rw"
+      - "/volume1/downloads:/data/downloads:rw"
+      - "/volume1/videos:/data/videos:ro"
